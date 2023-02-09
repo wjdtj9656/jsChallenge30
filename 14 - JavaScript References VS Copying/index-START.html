@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+
+<body>
+
+  <script>
+    // start with strings, numbers and booleans
+
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    const team = players;
+    team[0] = "kjs"
+    console.log(players, team);
+    const team2 = [...players];
+    team2[0] = "kjs2";
+    console.log(players, team2);
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    const cap = person;
+    cap.number = 99;
+    console.log(person, cap);
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap, cap2);
+    const cap3 = { ...person };
+    cap3.number = 1;
+    console.log(person, cap3)
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+    const dev = Object.assign({}, wes);
+
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    console.log(dev, dev2);
+  </script>
+
+</body>
+
+</html>
